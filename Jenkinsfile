@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
       choice(name: 'action', choices: 'create\ndestroy', description: 'Create/update or destroy the eks cluster.')
-      string(name: 'cluster', defaultValue : 'Hexa-Cluster', description: "EKS cluster name.")
+      string(name: 'cluster', defaultValue : 'hexa', description: "EKS cluster name.")
       choice(name: 'k8s_version', choices: '1.21.2\n1.20.7\n1.19.8\n1.18.16\n1.17.17\n1.16.15', description: 'K8s version to install.')
       string(name: 'NodeG', defaultValue : 'ng', description: "EKS cluster name.")
       string(name: 'instance_type', defaultValue : 't2.medium', description: "k8s worker node instance type.")
