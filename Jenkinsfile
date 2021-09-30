@@ -34,17 +34,15 @@ pipeline {
       }
         steps {
             sh '''
-              eksctl create cluster \
-                --name "${params.cluster}" \
-                --version "${params.k8s_version}" \
-                --region  "${params.region}" \
-                --nodegroup-name "${params.NodeG}"-0 \
-                --nodes "${params.num_workers}" \
-                --node-type "${params.instance_type}" \
-                --with-oidc \
-                --ssh-access \
-                --ssh-public-key "${params.key_pair}" \
-                --managed
+            eksctl create cluster \
+            --name ${params.cluster} \
+            --version ${params.k8s_version} \
+            --region ${params.region} \
+            --nodegroup-name ${params.NodeG}-0 \
+            --nodes ${params.num_workers} \
+            --node-type ${params.instance_type} \
+            --ssh-access \
+            --ssh-public-key "${params.key_pair}" \
             '''
         }
     }
