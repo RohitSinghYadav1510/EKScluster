@@ -19,13 +19,13 @@ pipeline {
 
     stage('Install eksctl') {
       steps {
-                sh """
-                mkdir bin
-                cd bin
-                curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xzf -
-                sudo chmod u+x eksctl
-                eksctl version
-                """
+             sh '''
+             mkdir bin
+             cd bin
+             curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xzf -
+             sudo chmod u+x eksctl
+             eksctl version
+             '''
             }
         }
     stage('Create Cluster') {
@@ -33,7 +33,7 @@ pipeline {
         expression { params.action == 'create' }
       }
         steps {
-            sh """
+            sh '''
               eksctl create cluster \
                 --name ${params.cluster} \
                 --version ${params.k8s_version} \
@@ -45,7 +45,7 @@ pipeline {
                 --ssh-access \
                 --ssh-public-key ${params.key_pair} \
                 --managed
-            """
+            '''
         }
     }
     stage('Setup Cluster') {
