@@ -20,7 +20,7 @@ pipeline {
     stage('Install eksctl') {
       steps {
              sh '''
-             mkdir bin
+             //mkdir bin
              cd bin
              curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xzf -
              sudo chmod u+x eksctl
