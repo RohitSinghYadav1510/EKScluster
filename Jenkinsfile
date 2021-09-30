@@ -35,15 +35,15 @@ pipeline {
         steps {
             sh '''
               eksctl create cluster \
-                --name ${params.cluster} \
-                --version ${params.k8s_version} \
-                --region  ${params.region} \
-                --nodegroup-name ${params.NodeG}-0 \
-                --nodes ${params.num_workers} \
-                --node-type ${params.instance_type} \
+                --name "${params.cluster}" \
+                --version "${params.k8s_version}" \
+                --region  "${params.region}" \
+                --nodegroup-name "${params.NodeG}"-0 \
+                --nodes "${params.num_workers}" \
+                --node-type "${params.instance_type}" \
                 --with-oidc \
                 --ssh-access \
-                --ssh-public-key ${params.key_pair} \
+                --ssh-public-key "${params.key_pair}" \
                 --managed
             '''
         }
@@ -53,7 +53,7 @@ pipeline {
         expression { params.action == 'create' }
       }
       steps {
-        sh "aws eks update-kubeconfig --name ${params.cluster} --region ${params.region}"
+        sh 'aws eks update-kubeconfig --name "${params.cluster}" --region "${params.region}"'
       }
     }   
    }
