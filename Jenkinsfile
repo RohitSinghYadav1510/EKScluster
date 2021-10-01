@@ -33,7 +33,7 @@ pipeline {
         expression { params.action == 'create' }
       }
         steps {
-            sh '''
+            sh '''#!/bin/bash
             eksctl create cluster \
             --name ${params.cluster} \
             --version ${params.k8s_version} \
