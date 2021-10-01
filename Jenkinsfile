@@ -53,6 +53,14 @@ pipeline {
       steps {
         sh "aws eks update-kubeconfig --name ${params.cluster} --region ${params.region}"
       }
-    }   
+    }
+    stage('Delete Cluster') {
+        when {
+        expression { params.action == 'destroy' }
+      }
+      steps {
+         sh "eksctl delete cluster --name=${params.cluster} --region=${params.region}"
+      }
+    }     
    }
 }
