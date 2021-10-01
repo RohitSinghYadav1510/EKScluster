@@ -5,7 +5,7 @@ pipeline {
       string(name: 'cluster', defaultValue : 'hexa-cluster', description: "EKS cluster name.")
       choice(name: 'k8s_version', choices: '1.21\n1.20\n1.19\n1.18\n1.17\n1.16', description: 'K8s version to install.')
       string(name: 'NodeG', defaultValue : 'ng', description: "EKS cluster name.")
-      string(name: 'instance_type', defaultValue : 't2.medium', description: "k8s worker node instance type.")
+      string(name: 'instance_type', defaultValue : 't3.medium', description: "k8s worker node instance type.")
       string(name: 'num_workers', defaultValue : '1', description: "k8s number of worker instances.")
       string(name: 'region', defaultValue : 'ap-south-1', description: "AWS region.")
       string(name: 'key_pair', defaultValue : 'rohit', description: "EC2 instance ssh keypair.")
