@@ -18,6 +18,9 @@ pipeline {
   stages {
 
     stage('Install eksctl') {
+        when {
+        expression { params.action == 'create' }
+      }
       steps {
              sh '''
              #mkdir bin
