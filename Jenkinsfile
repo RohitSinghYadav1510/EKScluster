@@ -33,7 +33,7 @@ pipeline {
         expression { params.action == 'create' }
       }
         steps {
-            sh '''#!/bin/bash
+            sh """
             eksctl create cluster \
             --name ${params.cluster} \
             --version ${params.k8s_version} \
@@ -43,7 +43,7 @@ pipeline {
             --node-type ${params.instance_type} \
             --ssh-access \
             --ssh-public-key "${params.key_pair}" \
-            '''
+            """
         }
     }
     stage('Setup Cluster') {
@@ -51,7 +51,7 @@ pipeline {
         expression { params.action == 'create' }
       }
       steps {
-        sh 'aws eks update-kubeconfig --name "${params.cluster}" --region "${params.region}"'
+        sh "aws eks update-kubeconfig --name ${params.cluster} --region ${params.region}"
       }
     }   
    }
