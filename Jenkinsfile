@@ -13,7 +13,7 @@ pipeline {
    }
   environment {
     PATH = "${env.WORKSPACE}/bin:${env.PATH}"
-    KUBECONFIG = "${env.WORKSPACE}/.kube/config"
+    //KUBECONFIG = "${env.WORKSPACE}/.kube/config"
   }
   stages {
 
