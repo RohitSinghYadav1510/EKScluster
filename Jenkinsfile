@@ -8,7 +8,7 @@ pipeline {
       string(name: 'instance_type', defaultValue : 't3.medium', description: "k8s worker node instance type.")
       string(name: 'num_workers', defaultValue : '1', description: "k8s number of worker instances.")
       string(name: 'region', defaultValue : 'ap-south-1', description: "AWS region.")
-      string(name: 'key_pair', defaultValue : 'rohit', description: "EC2 instance ssh keypair.")
+      string(name: 'key_pair', defaultValue : 'Jenkinskey', description: "EC2 instance ssh keypair.")
 
    }
   environment {
